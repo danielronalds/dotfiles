@@ -1,5 +1,9 @@
 {
-  "projectDir": ["Projects/", ".config/"],
+  "projectDirs": [
+    "Personal/",
+    "Work/",
+    ".config/"
+  ],
   "templates": [
     {
       "name": "Git",
