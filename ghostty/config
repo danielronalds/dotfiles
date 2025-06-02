@@ -1,5 +1,5 @@
 window-decoration = false
-background-opacity = 0.95
+background-opacity = 0.90
 
 theme = tokyonight-storm
 font-size = 20

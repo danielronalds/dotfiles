@@ -17,9 +17,6 @@ client.unfocused #24283B #24283B #C0CAF5
 gaps outer 10
 gaps inner 10
 
-# Enabling vscode transparency
-for_window [app_id="code"] opacity 0.95
-
 # Configuring Bar
 bar {
     position bottom
