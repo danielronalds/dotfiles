@@ -4,7 +4,7 @@ output eDP-1 {
 }
 
 # Setting Backgrounds
-output * bg $HOME/.config/sway/backgrounds/dark-background.jpg fill
+output * bg $HOME/.config/sway/backgrounds/gilbi.png fill
 
 # Removing titlebar
 default_border none
