@@ -3,7 +3,7 @@
 # Script to install my dotfiles via curl
 
 main() {
-    local projects_dir="$HOME/Projects"
+    local projects_dir="$HOME/Personal/"
     local dotfiles_repo="$projects_dir/dotfiles"
 
     if [[ -e "$dotfiles_repo" ]]; then
