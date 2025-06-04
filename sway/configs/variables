@@ -19,6 +19,8 @@ set $filebrowser ghostty -e yazi
 
 set $notes emacs
 
-set $lockscreen swaylock -i $HOME/.config/sway/backgrounds/dark-background.jpg
+set $background $HOME/.config/sway/backgrounds/gilbi.png
+
+set $lockscreen swaylock -i $background
 
 set $screenshot grim -g "$(slurp -d)" - | wl-copy
