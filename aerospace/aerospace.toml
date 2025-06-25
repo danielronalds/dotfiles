@@ -16,6 +16,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     do shell script "open -n -a Ghostty"
     ''''
 
+    alt-shift-enter = '''exec-and-forget osascript -e '
+    do shell script "open -n -a Zen"
+    ''''
+
     # i3 wraps focus by default
     alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
     alt-j =         'focus --boundaries-action wrap-around-the-workspace down'
