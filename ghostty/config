@@ -7,8 +7,6 @@ font-size = 16
 cursor-style = "block"
 shell-integration-features = "no-cursor"
 
-font-thicken = true
-
 window-padding-x = 10
 window-padding-y = 10
 
