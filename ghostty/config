@@ -1,13 +1,11 @@
-window-decoration = false
+#window-decoration = false
 background-opacity = 0.90
 
 theme = tokyonight-storm
-font-size = 20
+font-size = 16
 
 cursor-style = "block"
 shell-integration-features = "no-cursor"
-
-font-thicken = true
 
 window-padding-x = 10
 window-padding-y = 10
