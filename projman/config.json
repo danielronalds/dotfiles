@@ -4,6 +4,14 @@
     "Work/",
     ".config/"
   ],
+  "session_layout": {
+    "windows": [
+      "CLI",
+      "Code",
+      "Server"
+    ],
+    "starting_window": 2
+  },
   "templates": [
     {
       "name": "Git",
