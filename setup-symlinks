@@ -39,6 +39,14 @@ setup_symlink() {
     printf "${GREEN}SUCCESS${NC} symlinked $dir\n"
 }
 
+symlink_home_configs() {
+    shopt -s dotglob
+    for dotfile in "$DOTFILES_DIR"/home/*; do
+        ln -sf $dotfile $HOME
+        printf "${GREEN}SUCCESS${NC} symlinked $dotfile\n"
+    done
+}
+
 main() {
     check_in_pwd
 
@@ -47,6 +55,8 @@ main() {
     for config in ${configs[@]}; do
         setup_symlink $config
     done
+
+    symlink_home_configs
 }
 
 main
