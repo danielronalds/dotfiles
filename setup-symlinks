@@ -50,7 +50,7 @@ symlink_home_configs() {
 main() {
     check_in_pwd
 
-    configs=( "sway" "ghostty" "i3blocks" "tmux" "projman" "aerospace" "hypr" "rofi" )
+    configs=( "sway" "ghostty" "i3blocks" "tmux" "projman" "aerospace" "hypr" "rofi" "waybar" )
 
     for config in ${configs[@]}; do
         setup_symlink $config
