@@ -2,7 +2,7 @@
     "layer": "top",
     "height": 25, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    "position": "bottom", 
+    "position": "bottom",
     "margin-top": 0,
     "margin-bottom": 8,
     "margin-left": 8,
@@ -14,7 +14,7 @@
     "modules-right": ["pulseaudio", "backlight", "network",  "battery", "clock", "tray"],
 
     "custom/distro-logo": {
-        "exec": "echo '󱄅'",
+        "exec": "echo '󰣇'",
         "format": "{}",
         "interval": "once",
     },
