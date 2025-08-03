@@ -44,3 +44,6 @@ eval "$(zoxide init zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# Added by `rbenv init` on Sun Aug  3 09:48:45 AM UTC 2025
+eval "$(rbenv init - --no-rehash zsh)"
