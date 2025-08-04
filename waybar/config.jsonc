@@ -4,13 +4,13 @@
     "spacing": 4, // Gaps between modules (4px)
     "position": "bottom",
     "margin-top": 0,
-    "margin-bottom": 8,
-    "margin-left": 8,
-    "margin-right": 8,
+    "margin-bottom": 10,
+    "margin-left": 10,
+    "margin-right": 10,
 
     // Choose the order of the modules
     "modules-left": ["custom/distro-logo","hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
+    "modules-center": [],
     "modules-right": ["pulseaudio", "backlight", "network",  "battery", "clock", "tray"],
 
     "custom/distro-logo": {
