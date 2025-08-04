@@ -48,3 +48,5 @@ eval "$(starship init zsh)"
 
 # Added by `rbenv init` on Sun Aug  3 09:48:45 AM UTC 2025
 eval "$(rbenv init - --no-rehash zsh)"
+# Adding 3.4.2 ruby version to path
+export PATH="$HOME/.rbenv/versions/3.4.2/bin:$PATH"
