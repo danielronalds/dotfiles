@@ -5,6 +5,7 @@ alias y=yazi
 alias p=projman
 alias j=just
 alias cat=bat
+alias ls=eza
 alias cd=z
 
 alias ta="tmux attach"

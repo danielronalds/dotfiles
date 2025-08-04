@@ -1,6 +1,7 @@
 brightnessctl
 code
 emacs
+eza
 firefox
 ghostty
 grim
