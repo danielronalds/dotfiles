@@ -50,3 +50,11 @@ eval "$(starship init zsh)"
 eval "$(rbenv init - --no-rehash zsh)"
 # Adding 3.4.2 ruby version to path
 export PATH="$HOME/.rbenv/versions/3.4.2/bin:$PATH"
+
+# Seting up history
+HISTFILE="$HOME/.zsh_history"
+SAVEHIST=10000
+HISTSIZE=999
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
