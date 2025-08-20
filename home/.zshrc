@@ -58,3 +58,10 @@ HISTSIZE=999
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
+
+# Amazing easy ctrl+z? for toggling in and out of bg
+if [[ $- == *i* ]]; then
+  stty susp undef
+
+  bindkey -s '^Z' 'fg\n'
+fi
