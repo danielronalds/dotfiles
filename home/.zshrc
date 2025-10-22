@@ -65,3 +65,19 @@ if [[ $- == *i* ]]; then
 
   bindkey -s '^Z' 'fg\n'
 fi
+
+pr-title() {
+  gh pr view | head -n 1 | sed "s/title\\:\t//"
+}
+
+gb() {
+  local branch=$(git branch | fzf --reverse --height "50%" --color "bw")
+
+  local trimmed_branch=$(echo "$branch" | sed -e 's/^[[:space:]]*//')
+
+  if [[ -z "$trimmed_branch" ]]; then
+    return
+  fi
+
+  git checkout "$trimmed_branch"
+}
