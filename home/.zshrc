@@ -4,7 +4,7 @@ alias lg=lazygit
 alias y=yazi
 alias p=projman
 alias j=just
-alias cat=bat
+alias cat="bat --theme base16"
 alias ls=eza
 alias cd=z
 
@@ -102,5 +102,5 @@ cmpf() {
     local file_2=$(mktemp)
     nvim $file_2
 
-    diff $file_1 $file_2 | bat
+    diff $file_1 $file_2 | cat
 }
