@@ -86,3 +86,21 @@ mkcd() {
     mkdir $1
     cd $1
 }
+
+json() {
+    local temp_file=$(mktemp)
+
+    nvim $temp_file
+
+    jqp --theme catppuccin-frappe < $temp_file
+}
+
+cmpf() {
+    local file_1=$(mktemp)
+    nvim $file_1
+
+    local file_2=$(mktemp)
+    nvim $file_2
+
+    diff $file_1 $file_2 | bat
+}
