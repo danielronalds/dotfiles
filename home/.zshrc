@@ -89,10 +89,11 @@ mkcd() {
 
 json() {
     local temp_file=$(mktemp)
-
     nvim $temp_file
 
     jqp --theme catppuccin-frappe < $temp_file
+
+    rm $temp_file
 }
 
 cmpf() {
@@ -103,4 +104,6 @@ cmpf() {
     nvim $file_2
 
     diff $file_1 $file_2 | cat
+
+    rm $file_1 $file_2
 }
