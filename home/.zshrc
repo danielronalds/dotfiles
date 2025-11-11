@@ -1,4 +1,54 @@
-# Alases
+##################
+# Shell Settings #
+##################
+
+HISTFILE="$HOME/.zsh_history"
+SAVEHIST=10000
+HISTSIZE=999
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Setting ENV Variabeles
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR="nvim"
+export PAGER="bat"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+[ -s "/Users/danielronalds/.bun/_bun" ] && source "/Users/danielronalds/.bun/_bun"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# starship
+eval "$(starship init zsh)"
+
+######################
+# PATH Configuration #
+######################
+
+export PATH="$HOME/go/bin/:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+ # fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Added by `rbenv init` on Sun Aug  3 09:48:45 AM UTC 2025
+eval "$(rbenv init - --no-rehash zsh)"
+# Adding 3.4.2 ruby version to path
+export PATH="$HOME/.rbenv/versions/3.4.2/bin:$PATH"
+
+###########
+# Aliases #
+###########
+
 alias v=nvim
 alias lg=lazygit
 alias y=yazi
@@ -10,54 +60,9 @@ alias cd=z
 
 alias ta="tmux attach"
 
-
-# Setting ENV Variabeles
-export XDG_CONFIG_HOME="$HOME/.config"
-export EDITOR="nvim"
-
-# Adding Go Installed Packages
-export PATH="$HOME/go/bin/:$PATH"
-
-# Adding emacs to path
-export PATH="$HOME/.emacs.d/bin/:$PATH"
-
-# Adding local bin to path
-export PATH="$HOME/.local/bin/:$PATH"
-
-# bun completions
-[ -s "/Users/danielronalds/.bun/_bun" ] && source "/Users/danielronalds/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Cargo path
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
- # fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-# zoxide
-eval "$(zoxide init zsh)"
-
-# starship
-eval "$(starship init zsh)"
-
-# Added by `rbenv init` on Sun Aug  3 09:48:45 AM UTC 2025
-eval "$(rbenv init - --no-rehash zsh)"
-# Adding 3.4.2 ruby version to path
-export PATH="$HOME/.rbenv/versions/3.4.2/bin:$PATH"
-
-# Seting up history
-HISTFILE="$HOME/.zsh_history"
-SAVEHIST=10000
-HISTSIZE=999
-setopt SHARE_HISTORY
-setopt APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
+###################
+# Helpful Scripts #
+###################
 
 # Amazing easy ctrl+z? for toggling in and out of bg
 if [[ $- == *i* ]]; then
@@ -66,10 +71,12 @@ if [[ $- == *i* ]]; then
   bindkey -s '^Z' 'fg\n'
 fi
 
+# Get the title of the PR associated with the current git branch
 pr-title() {
   gh pr view | head -n 1 | sed "s/title\\:\t//"
 }
 
+# Use FZF to switch git branches
 gb() {
   local branch=$(git branch | fzf --reverse --height "50%" --color "bw")
 
@@ -82,11 +89,13 @@ gb() {
   git checkout "$trimmed_branch"
 }
 
+# Make and then cd into a directory
 mkcd() {
     mkdir $1
     cd $1
 }
 
+# For analysing json responses. Opens a nvim buffer for json content to be pasted in, then opens jqp
 json() {
     local temp_file=$(mktemp)
     nvim $temp_file
@@ -96,6 +105,7 @@ json() {
     rm $temp_file
 }
 
+# For quickly comparing files. Opens two buffers to paste content into, then diffs them
 cmpf() {
     local file_1=$(mktemp)
     nvim $file_1
