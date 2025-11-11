@@ -17,33 +17,21 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
 export PAGER="bat"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-[ -s "/Users/danielronalds/.bun/_bun" ] && source "/Users/danielronalds/.bun/_bun"
-
-# zoxide
+# Setup zoxide
 eval "$(zoxide init zsh)"
 
-# starship
+# Setup Starship
 eval "$(starship init zsh)"
+
+# Setup Mise-en-place
+eval "$(mise activate zsh)"
 
 ######################
 # PATH Configuration #
 ######################
 
-export PATH="$HOME/go/bin/:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
- # fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-# Added by `rbenv init` on Sun Aug  3 09:48:45 AM UTC 2025
-eval "$(rbenv init - --no-rehash zsh)"
-# Adding 3.4.2 ruby version to path
-export PATH="$HOME/.rbenv/versions/3.4.2/bin:$PATH"
 
 ###########
 # Aliases #
