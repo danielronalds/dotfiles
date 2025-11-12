@@ -1,3 +1,10 @@
+######################
+# PATH Configuration #
+######################
+
+export PATH="$HOME/.emacs.d/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+
 ##################
 # Shell Settings #
 ##################
@@ -25,13 +32,6 @@ eval "$(starship init zsh)"
 
 # Setup Mise-en-place
 eval "$(mise activate zsh)"
-
-######################
-# PATH Configuration #
-######################
-
-export PATH="$HOME/.emacs.d/bin/:$PATH"
-export PATH="$HOME/.local/bin/:$PATH"
 
 ###########
 # Aliases #
