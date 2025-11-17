@@ -22,7 +22,6 @@ source <(fzf --zsh)
 # Setting ENV Variabeles
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
-export PAGER="bat"
 
 # Setup zoxide
 eval "$(zoxide init zsh)"
