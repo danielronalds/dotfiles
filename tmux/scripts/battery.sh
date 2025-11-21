@@ -7,6 +7,9 @@ main() {
         "Darwin")
             mac_battery_percentage
             ;;
+        "Linux")
+            linux_battery_percentage
+            ;;
         *)
             echo "Unsupported OS"
             ;;
@@ -21,7 +24,11 @@ mac_battery_percentage() {
 }
 
 linux_battery_percentage() {
-    echo "TODO: Handle Linux"
+    local battery="/sys/class/power_supply/BAT0"
+
+    local percentage=$(cat "$battery/capacity")
+
+    print_percentage $percentage
 }
 
 print_percentage() {
