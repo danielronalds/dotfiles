@@ -59,12 +59,12 @@ if [[ $- == *i* ]]; then
 fi
 
 # Get the title of the PR associated with the current git branch
-pr-title() {
+,pr-title() {
   gh pr view | head -n 1 | sed "s/title\\:\t//"
 }
 
 # Use FZF to switch git branches
-gb() {
+,gb() {
   local branch=$(git branch | fzf --reverse --height "50%" --color "bw")
 
   local trimmed_branch=$(echo "$branch" | sed -e 's/^[[:space:]]*//')
@@ -77,13 +77,13 @@ gb() {
 }
 
 # Make and then cd into a directory
-mkcd() {
+,mkcd() {
     mkdir $1
     cd $1
 }
 
 # For analysing json responses. Opens a nvim buffer for json content to be pasted in, then opens jqp
-json() {
+,json() {
     local temp_file=$(mktemp)
     nvim $temp_file
 
@@ -93,7 +93,7 @@ json() {
 }
 
 # For quickly comparing files. Opens two buffers to paste content into, then diffs them
-cmpf() {
+,cmpf() {
     local file_1=$(mktemp)
     nvim $file_1
 
