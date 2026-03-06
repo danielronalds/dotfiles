@@ -3,6 +3,8 @@
 ######################
 
 export PATH="$HOME/.emacs.d/bin/:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin/:$PATH"
 
@@ -88,7 +90,7 @@ fi
     local temp_file=$(mktemp)
     nvim $temp_file
 
-    jqp --theme catppuccin-frappe < $temp_file
+    jiq < $temp_file
 
     rm $temp_file
 }
