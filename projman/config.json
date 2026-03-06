@@ -2,15 +2,19 @@
   "projectDirs": [
     "Personal/",
     "Work/",
-    ".config/"
+    ".config/",
+    "signinsolutions/"
   ],
-  "session_layout": {
-    "windows": [
-      "CLI",
-      "Code",
-      "Server"
-    ],
-    "starting_window": 2
+  "session_provider": "vscode",
+  "tmux": {
+    "session_layout": {
+      "windows": [
+        "CLI",
+        "Code",
+        "Server"
+      ],
+      "starting_window": 2
+    }
   },
   "templates": [
     {
