@@ -1,7 +1,7 @@
 #window-decoration = false
 background-opacity = 0.90
 
-theme = "TokyoNight Storm"
+theme = "TokyoNight"
 font-size = 16
 
 cursor-style = "block"
