@@ -5,7 +5,7 @@
     ".config/",
     "signinsolutions/"
   ],
-  "session_provider": "vscode",
+  "session_provider": "tmux",
   "tmux": {
     "session_layout": {
       "windows": [
