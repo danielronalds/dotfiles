@@ -24,7 +24,7 @@ main() {
     fi
 
     local start_time=$(echo "$response" | jq -r '.items[0].start.dateTime // empty')
-    local time=$(echo "$start_time" | grep -oE 'T[0-9]{2}:[0-9]{2}' | cut -c2-)
+    local time=$(date -jf "%Y-%m-%dT%H:%M:%S%z" "${start_time%:*}${start_time##*:}" "+%-l:%M %p" 2>/dev/null)
 
     if [[ "$time_only" == true ]]; then
         echo -n "${time}"
