@@ -1,0 +1,4 @@
+promptToReturnFromSubprocess: false
+editor:
+  editPreset: "nvim"
+  editInTerminal: true
