@@ -61,6 +61,11 @@ if [[ $- == *i* ]]; then
   bindkey -s '^Z' 'fg\n'
 fi
 
+# Enable Ctrl X + E for opening current command in editor
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
 # Get the title of the PR associated with the current git branch
 ,pr-title() {
   gh pr view | head -n 1 | sed "s/title\\:\t//"
