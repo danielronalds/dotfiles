@@ -1,5 +1,7 @@
-#window-decoration = false
+window-decoration = none
+macos-titlebar-style = hidden
 background-opacity = 0.90
+quit-after-last-window-closed = true
 
 theme = "TokyoNight"
 font-size = 16
