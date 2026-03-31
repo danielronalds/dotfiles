@@ -20,6 +20,7 @@ main() {
     local name=$(echo "$response" | jq -r '.items[0].summary // empty')
 
     if [[ -z "$name" ]]; then
+        echo -n "  No Meetings "
         return
     fi
 
@@ -27,9 +28,9 @@ main() {
     local time=$(date -jf "%Y-%m-%dT%H:%M:%S%z" "${start_time%:*}${start_time##*:}" "+%-l:%M %p" 2>/dev/null)
 
     if [[ "$time_only" == true ]]; then
-        echo -n "${time}"
+        echo -n "  ${time} "
     else
-        echo -n "${name} - ${time}"
+        echo -n "  ${name} - ${time} "
     fi
 }
 
