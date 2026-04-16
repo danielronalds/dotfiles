@@ -3,7 +3,8 @@ macos-titlebar-style = hidden
 background-opacity = 0.90
 quit-after-last-window-closed = true
 
-theme = "TokyoNight"
+#theme = "TokyoNight"
+theme = Rose Pine Moon
 font-size = 16
 
 cursor-style = "block"
