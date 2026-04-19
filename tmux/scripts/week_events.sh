@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-CACHE_PREFIX="/tmp/week_schedule_cache"
+CACHE_PREFIX="/tmp/week_events_cache"
 CACHE_TTL=300
 
 main() {
@@ -71,7 +71,7 @@ render_week() {
     remainder=$((budget % 5))
 
     local cols=()
-    local i day_date heading events content col this_width
+    local i day_date heading events content col this_width box_width
     for i in 0 1 2 3 4; do
         if [[ $i -lt $remainder ]]; then
             this_width=$((base + 1))
@@ -79,12 +79,18 @@ render_week() {
             this_width=$base
         fi
 
+        box_width=$((this_width - 2))
+        [[ $box_width -lt 6 ]] && box_width=6
+
         day_date=$(date -v-${offset}d -v+${i}d +%Y-%m-%d)
         heading=$(date -jf "%Y-%m-%d" "$day_date" "+%A %-d %b")
-        events=$(format_events_for_day "$response" "$day_date")
+        events=$(format_events_for_day "$response" "$day_date" "$box_width" "$this_width")
 
-        content=$(printf '%s\n\n%s' "$(gum style --bold --underline "$heading")" "$events")
-        col=$(gum style --border rounded --width "$this_width" --padding "0 2" --margin "0 1" -- "$content")
+        local heading_styled rule
+        heading_styled=$(gum style --bold --align center --width "$this_width" "$heading")
+        rule=$(printf '%*s' "$this_width" '' | tr ' ' '─')
+        content=$(printf '%s\n%s\n%s' "$heading_styled" "$rule" "$events")
+        col=$(gum style --border rounded --width "$this_width" --margin "0 1" -- "$content")
         cols+=("$col")
     done
 
@@ -94,6 +100,8 @@ render_week() {
 format_events_for_day() {
     local response="$1"
     local day_date="$2"
+    local box_width="$3"
+    local col_width="$4"
 
     local events
     events=$(echo "$response" | jq -r --arg d "$day_date" '
@@ -103,22 +111,25 @@ format_events_for_day() {
     ')
 
     if [[ -z "$events" ]]; then
-        echo "(nothing scheduled)"
+        gum style --align center --width "$col_width" --padding "1 0" -- "nothing scheduled"
         return
     fi
 
-    local start end summary time duration out=""
+    local boxes=()
+    local start end summary time duration event_content event_box
     while IFS='|' read -r start end summary; do
         if [[ "$start" == *"T"* ]]; then
             time=$(date -jf "%Y-%m-%dT%H:%M:%S%z" "${start%:*}${start##*:}" "+%-l:%M %p" 2>/dev/null)
             duration=$(event_duration "$start" "$end")
-            out+="${time}  ${summary} (${duration})"$'\n'
+            event_content=$(printf '%s\n%s\n(%s)' "$(gum style --bold "$time")" "$summary" "$duration")
         else
-            out+="All day  ${summary}"$'\n'
+            event_content=$(printf '%s\n%s' "$(gum style --bold 'All day')" "$summary")
         fi
+        event_box=$(gum style --border rounded --width "$box_width" --padding "0 1" -- "$event_content")
+        boxes+=("$event_box")
     done <<< "$events"
 
-    printf '%s' "${out%$'\n'}"
+    gum join --vertical "${boxes[@]}"
 }
 
 event_duration() {
