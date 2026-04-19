@@ -40,7 +40,17 @@ main() {
         fi
     fi
 
-    render_week "$monday_date" "$friday_date" "$offset" "$term_width" | tee "$cache_file"
+    local tmp
+    tmp=$(mktemp)
+    render_week "$monday_date" "$friday_date" "$offset" "$term_width" > "$tmp" &
+    local render_pid=$!
+
+    gum spin --spinner dot --spinner.foreground "#FFFFFF" --title "Loading week events..." -- \
+        bash -c "while kill -0 $render_pid 2>/dev/null; do sleep 0.1; done"
+
+    wait "$render_pid"
+    tee "$cache_file" < "$tmp"
+    rm -f "$tmp"
 }
 
 render_week() {
