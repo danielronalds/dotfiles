@@ -8,9 +8,9 @@ main() {
         return
     fi
 
-    local show_branch_short=$(tmux show-option -gqv @show_git_branch_short)
+    local show_short=$(tmux show-option -gqv @show_short_status_left)
 
-    if [[ "$show_branch_short" == "1" ]] && [[ ${#branch} -gt 15 ]]; then
+    if [[ "$show_short" == "1" ]] && [[ ${#branch} -gt 15 ]]; then
         branch="${branch:0:15}..."
     fi
 
