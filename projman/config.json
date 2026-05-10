@@ -16,6 +16,7 @@
       "starting_window": 2
     }
   },
+  "worktree_copy_excludes": ["**/node_modules"],
   "templates": [
     {
       "name": "Git",
