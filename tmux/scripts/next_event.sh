@@ -17,14 +17,16 @@ main() {
 
     local response=$(fetch_events)
 
-    local name=$(echo "$response" | jq -r '.items[0].summary // empty')
+    local next_event=$(echo "$response" | jq -c 'first(.items[]? | select((.summary // "") | ascii_downcase | contains("cooldown") | not))')
+
+    local name=$(echo "$next_event" | jq -r '.summary // empty')
 
     if [[ -z "$name" ]]; then
         echo -n "  No Meetings "
         return
     fi
 
-    local start_time=$(echo "$response" | jq -r '.items[0].start.dateTime // empty')
+    local start_time=$(echo "$next_event" | jq -r '.start.dateTime // empty')
     local time=$(date -jf "%Y-%m-%dT%H:%M:%S%z" "${start_time%:*}${start_time##*:}" "+%-l:%M %p" 2>/dev/null)
 
     if [[ "$time_only" == true ]]; then
@@ -53,7 +55,7 @@ fetch_events() {
         \"timeMax\": \"${time_max}\",
         \"orderBy\": \"startTime\",
         \"singleEvents\": true,
-        \"maxResults\": 1
+        \"maxResults\": 10
     }" 2>/dev/null)
 
     echo "$response" > "$CACHE_FILE"

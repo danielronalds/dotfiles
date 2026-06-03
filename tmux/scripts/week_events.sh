@@ -117,6 +117,7 @@ format_events_for_day() {
     events=$(echo "$response" | jq -r --arg d "$day_date" '
         .items[]?
         | select(((.start.dateTime // .start.date) | startswith($d)))
+        | select(((.summary // "") | ascii_downcase | contains("cooldown")) | not)
         | "\(.start.dateTime // .start.date)|\(.end.dateTime // .end.date // "")|\(.summary // "(untitled)")"
     ')
 
