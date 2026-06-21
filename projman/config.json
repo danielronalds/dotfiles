@@ -7,14 +7,11 @@
   ],
   "session_provider": "tmux",
   "tmux": {
-    "session_layout": {
-      "windows": [
-        "CLI",
-        "Code",
-        "Server"
-      ],
-      "starting_window": 2
-    }
+    "windows": [
+      "Server",
+      "Planning"
+    ],
+    "starting_window": 1
   },
   "worktree_copy_excludes": ["**/node_modules"],
   "templates": [
