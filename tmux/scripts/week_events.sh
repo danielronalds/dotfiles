@@ -2,7 +2,7 @@
 # Date:   2026-04-20
 # Author: Claude (Opus 4.7)
 # Intent: Print the current work week's Google Calendar events as columns,
-#         one per workday (Mon-Fri). Rendered inside a tmux popup via the
+#         one per workday (Mon-Fri). Rendered inside a tmux window via the
 #         prefix+W binding; companion to next_event.sh in the status bar.
 
 set -euo pipefail
