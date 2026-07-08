@@ -92,6 +92,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
       "layout tiling",
     ]
 
+[[on-window-detected]]
+    if.app-id="ru.starmel.OpenSuperWhisper"
+    run= [
+      "layout floating",
+    ]
+
 [gaps]
     inner.horizontal = 10
     inner.vertical =   10
