@@ -1,4 +1,4 @@
-window-decoration = none
+#window-decoration = none
 macos-titlebar-style = hidden
 background-opacity = 0.90
 quit-after-last-window-closed = true
