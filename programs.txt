@@ -16,3 +16,5 @@ wl-copy
 wmenu-run
 yazi
 zoxide
+wezterm
+git
