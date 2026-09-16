@@ -5,12 +5,15 @@ local config = wezterm.config_builder()
 local appearance = {
     color_scheme = 'rose-pine',
     font_size = 12,
-    opacity = 0.88
+    opacity = 0.88,
+    window_padding = 10
 }
 
 if wezterm.target_triple:find('linux') ~= nil then
     -- linux config
     config.wayland_window_background_blur = true
+
+    appearance.window_padding = 20
 elseif wezterm.target_triple:find('darwin') ~= nil then
     -- macos config
     config.macos_window_background_blur = 20
@@ -31,10 +34,10 @@ config.font_size = appearance.font_size
 
 config.window_decorations = "RESIZE"
 config.window_padding = {
-    left = 10,
-    right = 10,
-    top = 5,
-    bottom = 5
+    left = appearance.window_padding,
+    right = appearance.window_padding,
+    top = appearance.window_padding / 2,
+    bottom = appearance.window_padding / 2
 }
 
 config.default_prog = { '/bin/zsh', '-l' }
