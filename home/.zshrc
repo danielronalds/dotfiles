@@ -46,6 +46,7 @@ alias p=projman
 alias j=just
 alias cat="bat --theme base16"
 alias ls=eza
+alias ll="eza -la"
 alias cd=z
 
 alias ta="tmux attach"
